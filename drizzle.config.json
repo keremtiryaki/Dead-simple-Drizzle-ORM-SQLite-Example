@@ -1,0 +1,5 @@
+{
+    "out": "./dkit-migrations-folder",
+    "schema": "./src/db/schema/*",
+    "breakpoints": false
+  }
