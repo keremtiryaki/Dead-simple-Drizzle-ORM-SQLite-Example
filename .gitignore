@@ -3,3 +3,4 @@ dist
 dkit-migrations-folder
 todos.db
 .vscode
+nuxt-sample
