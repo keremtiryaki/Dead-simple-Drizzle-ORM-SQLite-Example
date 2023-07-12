@@ -2,20 +2,20 @@
 import { drizzle } from 'drizzle-orm/better-sqlite3';
 import { eq } from 'drizzle-orm'
 import { migrate } from "drizzle-orm/better-sqlite3/migrator";
-import { drizzle as drizzleLibSQL } from 'drizzle-orm/libsql'
-import { createClient as createLibSQLClient } from '@libsql/client/http'
-// import Database from 'better-sqlite3';
+// import { drizzle as drizzleLibSQL } from 'drizzle-orm/libsql'
+// import { createClient as createLibSQLClient } from '@libsql/client/http'
+import Database from 'better-sqlite3';
 import { todos, Todo, InsertTodo } from '../db/schema/todos';
 
 let sqlite: any | null = null;
 let db_drizzle: any = null;
 
 export function connect(): void {
-  // sqlite = new Database('todos.db');
-  // db_drizzle = drizzle(sqlite);
-  db_drizzle = drizzleLibSQL(createLibSQLClient({
-    url: "http://localhost:8080"
-  }))
+  sqlite = new Database('todos.db');
+  db_drizzle = drizzle(sqlite);
+  // db_drizzle = drizzleLibSQL(createLibSQLClient({
+  //   url: "http://localhost:8080"
+  // }))
   migrate(db_drizzle, { migrationsFolder: "dkit-migrations-folder" });
   console.log('Connected to the SQLite database!');
 }
